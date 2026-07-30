@@ -157,6 +157,7 @@
         // Seleciona os elementos da página
         const formulario = document.getElementById('meuFormulario');
         const corpoTabela = document.getElementById('corpoTabela');
+        const campoNome = document.getElementById('nome');
 
         // Escuta o evento de envio do formulário
         formulario.addEventListener('submit', function(event) {
@@ -164,7 +165,7 @@
             event.preventDefault();
 
             // Captura os valores digitados nos campos
-            const nome = document.getElementById('nome').value;
+            const nome = campoNome.value;
             const idade = document.getElementById('idade').value;
 
             // Cria uma nova linha (tr) na tabela
@@ -182,14 +183,20 @@
             // Adiciona a nova linha ao corpo da tabela
             corpoTabela.appendChild(novaLinha);
 
-            // Limpa os campos do formulário para o próximo cadastro
+            // Etapa 5: Limpa todos os campos do formulário para o próximo cadastro
             formulario.reset();
+
+            // Etapa 5: Coloca o foco (cursor) de volta no campo Nome
+            campoNome.focus();
         });
 
         // Função para o botão Excluir funcionar
         function removerLinha(botao) {
             // Remove a linha (tr) que é mãe do botão clicado
             botao.closest('tr').remove();
+            
+            // Opcional: Devolve o foco para o campo nome após excluir para agilizar digitação
+            campoNome.focus();
         }
     </script>
 
